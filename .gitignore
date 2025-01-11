@@ -1,0 +1,71 @@
+# ---- Python ----
+# Cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environnement virtuel
+venv/
+.env/
+.env.bak
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+dist/
+build/
+wheels/
+pip-wheel-metadata/
+
+# Dépendances générées par pip
+*.log
+*.db
+*.sqlite3
+
+# ---- IDE/OS ----
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+
+# Fichiers système Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---- Flask ----
+# Flask-Specific
+instance/
+migrations/
+celerybeat-schedule
+*.pid
+
+# Logs et Debugging
+*.log
+*.out
+*.err
+debug.log
+error.log
+
+# ---- Git ----
+# Ignore des fichiers de configuration Git temporaires
+.git/
+
+# ---- Autres ----
+# Configurations locales
+*.local
+*.swp
+*.bak
+*.orig
+*.tmp
+
+# Fichiers cachés
+.DS_Store
+.hidden
+
+# ---- Docker (si utilisé dans le futur) ----
+.dockerignore
+Dockerfile
+docker-compose.yml
