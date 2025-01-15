@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_required, login_user, logout_user
 from app.forms import RegisterForm, LoginForm, UserProfileForm
-from app.services import AuthService, ProfileService
+from app.services import AuthService
 from flask import session
 
 auth_bp = Blueprint("auth", __name__, template_folder="../templates/auth")
@@ -16,7 +16,7 @@ def register():
             flash("Registration successful", "success")
             return redirect(url_for("auth.login"))
         flash(result.error, "warning")
-    return render_template("register.html",form=form)
+    return render_template("register.html", form=form)
 
 
 @auth_bp.route("/login", methods=["GET", "POST"])
@@ -37,6 +37,7 @@ def login():
         flash(result.error, "warning")
     return render_template("login.html", form=form)
 
+
 @auth_bp.route("/profile", methods=["GET", "POST"])
 @login_required
 def profile():
@@ -51,7 +52,7 @@ def profile():
         }
 
         # Met à jour le profil via le service
-        result = ProfileService.update_profile(current_user.id, form_data)
+        result = AuthService.update_profile(current_user.id, form_data)
 
         if result.success:
             flash("Profil mis à jour avec succès", "success")
@@ -64,6 +65,7 @@ def profile():
     form.email.data = current_user.email
 
     return render_template("profile.html", form=form, user=current_user)
+
 
 @auth_bp.route("/logout")
 def logout():

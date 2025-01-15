@@ -2,11 +2,12 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, PasswordField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, Optional
 
+
 class UserProfileForm(FlaskForm):
-    """Formulaire pour mettre à jour les informations du profil utilisateur."""
+    """Form to update user profile information."""
 
     username = StringField(
-        "Nom d'utilisateur",
+        "Username",
         validators=[DataRequired(), Length(min=3, max=80)],
     )
     email = EmailField(
@@ -14,13 +15,13 @@ class UserProfileForm(FlaskForm):
         validators=[DataRequired(), Email(), Length(max=120)],
     )
     password = PasswordField(
-        "Nouveau mot de passe",
+        "New Password",
         validators=[Optional(), Length(min=8, max=72)],
     )
     confirm_password = PasswordField(
-        "Confirmer le mot de passe",
+        "Confirme New Password",
         validators=[
             Optional(),
-            EqualTo("password", message="Les mots de passe doivent correspondre"),
+            EqualTo("password", message="Passwords must match"),
         ],
     )

@@ -3,7 +3,7 @@
 <section>
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
     <div
-      class="w-full bg-white rounded-lg shadow dark:border md:mt-0 p-6  dark:bg-gray-800 dark:border-gray-700"
+      class="w-full bg-white rounded-lg shadow dark:border md:mt-0 p-6 dark:bg-gray-800 dark:border-gray-700"
     >
       <div class="p-6 space-y-6">
         <h1
@@ -12,80 +12,92 @@
           Profile
         </h1>
 
-        <!-- View section -->
-        <div class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Username</label>
-            <p class="mt-1 text-gray-900 dark:text-white">{{ user.username }}</p>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-            <p class="mt-1 text-gray-900 dark:text-white">{{ user.email }}</p>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Creation date</label>
-            <p class="mt-1 text-gray-900 dark:text-white">{{ user.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Last login</label>
-            <p class="mt-1 text-gray-900 dark:text-white">
-              {{ session['last_login'] if session.get('last_login') else 'Never' }}
-            </p>
-          </div>
-        </div>
-
         <!-- Edit section -->
         <form method="POST" class="space-y-4">
           {{ form.hidden_tag() }}
 
           <!-- Username field -->
           <div>
-            {{ form.username.label(class="block text-sm font-medium text-gray-700 dark:text-gray-300") }}
-            {{ form.username(class="mt-1 block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") }}
-            {% if form.username.errors %}
-              {% for error in form.username.errors %}
-                <span class="text-sm text-red-600">{{ error }}</span>
-              {% endfor %}
-            {% endif %}
+            {{ form.username.label(class="block text-sm font-medium
+            text-gray-700 dark:text-gray-300") }} {{ form.username(class="mt-1
+            block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900
+            rounded-lg focus:ring-blue-500 focus:border-blue-500
+            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+            dark:text-white dark:focus:ring-blue-500
+            dark:focus:border-blue-500") }} {% if form.username.errors %} {% for
+            error in form.username.errors %}
+            <span class="text-sm text-red-600">{{ error }}</span>
+            {% endfor %} {% endif %}
           </div>
 
           <!-- Email field -->
           <div>
-            {{ form.email.label(class="block text-sm font-medium text-gray-700 dark:text-gray-300") }}
-            {{ form.email(class="mt-1 block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") }}
-            {% if form.email.errors %}
-              {% for error in form.email.errors %}
-                <span class="text-sm text-red-600">{{ error }}</span>
-              {% endfor %}
-            {% endif %}
+            {{ form.email.label(class="block text-sm font-medium text-gray-700
+            dark:text-gray-300") }} {{ form.email(class="mt-1 block w-full p-2.5
+            bg-gray-50 border border-gray-300 text-gray-900 rounded-lg
+            focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700
+            dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+            dark:focus:ring-blue-500 dark:focus:border-blue-500") }} {% if
+            form.email.errors %} {% for error in form.email.errors %}
+            <span class="text-sm text-red-600">{{ error }}</span>
+            {% endfor %} {% endif %}
           </div>
 
           <!-- Password field -->
           <div>
-            {{ form.password.label(class="block text-sm font-medium text-gray-700 dark:text-gray-300") }}
-            {{ form.password(class="mt-1 block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder="Leave blank to keep unchanged") }}
-            {% if form.password.errors %}
-              {% for error in form.password.errors %}
-                <span class="text-sm text-red-600">{{ error }}</span>
-              {% endfor %}
-            {% endif %}
+            {{ form.password.label(class="block text-sm font-medium
+            text-gray-700 dark:text-gray-300") }} {{ form.password(class="mt-1
+            block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900
+            rounded-lg focus:ring-blue-500 focus:border-blue-500
+            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+            dark:text-white dark:focus:ring-blue-500
+            dark:focus:border-blue-500", placeholder="Leave blank to keep unchanged") }} {% if form.password.errors %} {% for error in
+            form.password.errors %}
+            <span class="text-sm text-red-600">{{ error }}</span>
+            {% endfor %} {% endif %}
           </div>
 
           <!-- Confirm password field -->
           <div>
-            {{ form.confirm_password.label(class="block text-sm font-medium text-gray-700 dark:text-gray-300") }}
-            {{ form.confirm_password(class="mt-1 block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder="Leave blank to keep unchanged") }}
-            {% if form.confirm_password.errors %}
-              {% for error in form.confirm_password.errors %}
-                <span class="text-sm text-red-600">{{ error }}</span>
-              {% endfor %}
-            {% endif %}
+            {{ form.confirm_password.label(class="block text-sm font-medium
+            text-gray-700 dark:text-gray-300") }} {{
+            form.confirm_password(class="mt-1 block w-full p-2.5 bg-gray-50
+            border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500
+            focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600
+            dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+            dark:focus:border-blue-500", placeholder="Leave blank to keep unchanged") }} {% if form.confirm_password.errors %} {% for error in
+            form.confirm_password.errors %}
+            <span class="text-sm text-red-600">{{ error }}</span>
+            {% endfor %} {% endif %}
+          </div>
+
+          <!-- View section -->
+          <div class="space-y-4">
+            <div>
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >Creation date</label
+              >
+              <p class="mt-1 text-gray-900 dark:text-white">
+                {{ user.created_at.strftime('%d/%m/%Y %H:%M') }}
+              </p>
+            </div>
+            <div>
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >Last login</label
+              >
+              <p class="mt-1 text-gray-900 dark:text-white">
+                {{ session['last_login'] if session.get('last_login') else
+                'Never' }}
+              </p>
+            </div>
           </div>
 
           <!-- Update button -->
           <button
             type="submit"
-            class=" text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Update
           </button>

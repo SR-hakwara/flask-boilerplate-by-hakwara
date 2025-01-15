@@ -3,7 +3,6 @@ from wtforms import StringField, PasswordField, BooleanField, EmailField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 
-
 class LoginForm(FlaskForm):
     """Simple login form with basic validation"""
 

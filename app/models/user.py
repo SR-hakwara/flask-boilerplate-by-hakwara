@@ -1,5 +1,7 @@
-from dataclasses import dataclass   # For declaring data classes with special methods (such as __init__)
-from flask_login import UserMixin   # To manage user authentication with Flask-Login
+from dataclasses import (
+    dataclass,
+)  # For declaring data classes with special methods (such as __init__)
+from flask_login import UserMixin  # To manage user authentication with Flask-Login
 from app.extensions import db
 from datetime import datetime, timedelta
 from typing import Optional
@@ -22,7 +24,6 @@ class User(UserMixin, db.Model):
         locked_until: Optional[datetime]: Date and time until which the account is locked
     """
 
-
     # Data model fields (columns) declarationse
     id: int = db.Column(db.Integer, primary_key=True)
     username: str = db.Column(db.String(80), unique=True, nullable=False)
@@ -44,7 +45,7 @@ class User(UserMixin, db.Model):
         """
         if self.is_locked():
             return  # Do nothing if the account is already locked
-        
+
         self.login_attempts += 1
         if self.login_attempts >= current_app.config["MAX_LOGIN_ATTEMPTS"]:
             self.locked_until = datetime.now() + timedelta(
